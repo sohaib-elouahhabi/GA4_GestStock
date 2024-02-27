@@ -8,6 +8,8 @@ import com.example.gest_stock.Services.CatgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,12 @@ public class ArticleController {
 
     @Autowired
     private CatgService catgService;
+
+    @ModelAttribute("username")  // Add username to model for all controller methods
+    public String getAuthenticatedUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication != null ? authentication.getName() : null;
+    }
 
     @GetMapping("/Articles")
     public String getArticles(Model model,
