@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/bdd
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+GA_TRACKING_ID_2: G-1E9WXRM5EH
